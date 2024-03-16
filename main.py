@@ -2,7 +2,7 @@ from playsound import playsound
 import threading
 import keyboard
 
-umlaute = {
+umlauts = {
   "ae": "ä",
   "ue": "ü",
   "oe": "ö",
@@ -36,11 +36,11 @@ def on_key_event(event):
                 del key_buffer[0]
                 
             lookup_text = key_buffer[0] + key_buffer[1]
-            if lookup_text in umlaute:
+            if lookup_text in umlauts:
                 keyboard.press_and_release("backspace")
                 keyboard.press_and_release("backspace")
 
-                keyboard.write(umlaute[lookup_text])
+                keyboard.write(umlauts[lookup_text])
                 key_buffer = []
 
 def pausefunction():
