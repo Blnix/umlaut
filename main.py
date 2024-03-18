@@ -1,5 +1,4 @@
 from playsound import playsound
-import threading
 import keyboard
 
 umlauts = {
@@ -44,11 +43,11 @@ def on_key_event(event):
                 key_buffer = []
 
 def pausefunction():
-    global paused,play_activation_sound
+    global paused, play_activation_sound
     if play_activation_sound and paused:
-        threading.Thread(target=playsound, args=("start.mp3",)).start()
+        playsound("start.mp3", block=False)
     elif play_activation_sound and not paused:
-        threading.Thread(target=playsound, args=("stop.mp3",)).start()
+        playsound("stop.mp3", block=False)
     paused = not paused
 
 keyboard.hook(on_key_event)
